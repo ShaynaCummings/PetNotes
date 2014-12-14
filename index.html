@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
 </head>
-<body>
+<body ng-app="PetAppUI">
 
-<p>sample text</p>
+<ng-include src="'templates/partials/navbar.html'"></ng-include>
 
-
+<ng-view></ng-view>
 
 <!-- JS Files -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
