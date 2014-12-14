@@ -21,3 +21,29 @@ angular.module('PetAppUI').config(function($routeProvider) {
             redirectTo: '/'
         });
 });
+
+angular.module('PetAppUI').controller('NavbarCtrl', function($scope, $location) {
+    'use strict';
+
+    $scope.isActive = function(viewLocation) {
+        return viewLocation === $location.path();
+    };
+});
+
+angular.module('PetAppUI').controller('DashboardCtrl', function($scope, $http) {
+    'use strict';
+
+    $http.get('http://localhost:3000/pets').success(function(response) {
+        $scope.pets = response;
+    });
+
+});
+
+angular.module('PetAppUI').controller('RecordCtrl', function($scope, $http) {
+    'use strict';
+
+    // $http.get('https://petapp-api.herokuapp.com/pets').success(function(response) {
+    //     $scope.pets = response;
+    // });
+
+});
