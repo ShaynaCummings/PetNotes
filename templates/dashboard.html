@@ -4,7 +4,7 @@
     <p>Here's a list of your pets: </p>
 
     <ul>
-      <li ng-repeat="pet in pets"><strong>{{ pet.name }}</strong>, {{ pet.category }} </li>
+      <li ng-repeat="pet in pets"><a href="#/pets/{{pet.id}}">   {{ pet.name }}, {{ pet.category }} </a></li>
     </ul>
 
 </div>

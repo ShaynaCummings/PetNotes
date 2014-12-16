@@ -13,9 +13,13 @@ angular.module('PetAppUI').config(function($routeProvider) {
             templateUrl: 'templates/dashboard.html',
             controller: 'DashboardCtrl'
         })
-        .when('/record', {
+         .when('/record', {
+             templateUrl: 'templates/record.html',
+             controller: 'SampleCtrl'
+        })
+        .when('/pets/:petId', {
             templateUrl: 'templates/record.html',
-            controller: 'RecordCtrl'
+            controller: 'PetCtrl'
         })
         .otherwise({
             redirectTo: '/'
@@ -39,7 +43,7 @@ angular.module('PetAppUI').controller('DashboardCtrl', function($scope, $http) {
 
 });
 
-angular.module('PetAppUI').controller('RecordCtrl', function($scope, $http) {
+angular.module('PetAppUI').controller('SampleCtrl', function($scope, $http) {
     'use strict';
 
     $http.get('http://petapp-api.herokuapp.com/pets/1').success(function(response) {
@@ -47,3 +51,17 @@ angular.module('PetAppUI').controller('RecordCtrl', function($scope, $http) {
     });
 
 });
+
+
+
+// angular.module('PetAppUI').controller('DashboardCtrl', ['$scope', 'Pet',
+//   function($scope, Pet) {
+//     $scope.pets = Pet.query();
+//   }]);
+
+// angular.module('PetAppUI').controller('RecordCtrl', ['$scope', '$routeParams', 'Pet',
+//   function($scope, $routeParams, Pet) {
+//     $scope.phone = Pet.get({petId: $routeParams.petId}, function(pet) {         });
+
+//   }]);
+
