@@ -5,3 +5,7 @@ body {
 a {
   cursor: pointer;
 }
+
+.mediumtable {
+  max-width: 400px;
+}
