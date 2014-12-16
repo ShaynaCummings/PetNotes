@@ -1,4 +1,81 @@
-<div class="container">
-    <h1>Pet name's record</h1>
+<div ng-model="pet" class="container">
+
+    <h1> {{ pets.name }}'s record</h1>
+      <p> {{ pets.picture_url }} </p>
+      <p> {{ pets.category }} [ {{ pets.breed }} ] </p>
+
+    <hr />
+
+    <h2> Basic Info </h2>
+      <p>Sex:  {{ pets.sex}} </p>
+      <p>Birthdate: {{ pets.birthdate }}</p>
+      <p>Age: (calculate from birthdate) </p>
+      <p>Adoption date:  {{ pets.adoption_date }} </p>
+      <p>Microchip Number: {{ pets.microchip_number }}</p>
+
+    <hr />
+
+    <h2> Primary Veterinarian </h2>
+
+      <p> Dr. {{ pets.veterinarian.first_name }} {{ pets.veterinarian.last_name }}</p>
+      <p>Email: <a href="mailto:{{ pets.veterinarian.email_address }}">{{ pets.veterinarian.email_address }}</a></p>
+      <p>Phone: <a href="tel:{{ pets.veterinarian.phone_number }}">{{ pets.veterinarian.phone_number }}</a></p>
+      <p>Practice Name: {{ pets.veterinarian.practice_name }} </p>
+
+    <h2> Length/Height Chart </h2>
+      <ul>
+        <li ng-repeat="length in pets.length">
+        {{ length.date_measured }}: {{ length.length }} {{ length.length_units }} </li>
+      </ul>
+
+
+    <h2> Weight Chart </h2>
+      <ul>
+        <li ng-repeat="weight in pets.weights">
+        {{ weight.date_measured }}: {{ weight.weight_amt }} {{ weight.weight_units }} </li>
+      </ul>
+
+
+    <h2> Conditions </h2>
+      <ul>
+        <li ng-repeat="condition in pets.conditions">
+        {{ condition.name }}: {{ condition.link_url }} {{ condition.diagnosis_date }} </li>
+
+      </ul>
+
+
+
+    <h2> Medications </h2>
+
+    <p> name </p>
+    <p> rx_num </p>
+    <p> dose </p>
+    <p> units </p>
+    <p> frequency </p>
+    <p> description </p>
+    <p> date_prescribed</p>
+      supply cost>
+    <p> associated veterinarian </p>
+    <p> associated condition </p>
+
+    <h2> Vaccinations </h2>
+
+    <p> name </p>
+    <p> date_given </p>
+    <p> date_next_due </p>
+
+
+    <p>
+
+    <h2> Appointment History </h2>
+
+    <p> appointment_date </p>
+    <p> veterinarian </p>
+    <p> description </p>
+  <p> cost</p>
+    <p> associated condition(s)</p>
+    <p> associated medication(s)</p>
+    <p> associated vaccination(s) </p>
+
 
 </div>

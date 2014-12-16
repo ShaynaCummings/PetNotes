@@ -33,7 +33,7 @@ angular.module('PetAppUI').controller('NavbarCtrl', function($scope, $location) 
 angular.module('PetAppUI').controller('DashboardCtrl', function($scope, $http) {
     'use strict';
 
-    $http.get('http://localhost:3000/pets').success(function(response) {
+    $http.get('http://petapp-api.herokuapp.com/pets').success(function(response) {
         $scope.pets = response;
     });
 
@@ -42,8 +42,8 @@ angular.module('PetAppUI').controller('DashboardCtrl', function($scope, $http) {
 angular.module('PetAppUI').controller('RecordCtrl', function($scope, $http) {
     'use strict';
 
-    // $http.get('https://petapp-api.herokuapp.com/pets').success(function(response) {
-    //     $scope.pets = response;
-    // });
+    $http.get('http://petapp-api.herokuapp.com/pets/1').success(function(response) {
+        $scope.pets = response;
+    });
 
 });
