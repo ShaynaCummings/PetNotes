@@ -7,7 +7,7 @@
     <hr />
 
     <h2> Basic Info </h2>
-      <p>Sex:  {{ pets.sex}} </p>
+      <p>Sex:  {{ pets.sex }} </p>
       <p>Birthdate: {{ pets.birthdate }}</p>
       <p>Age: (calculate from birthdate) </p>
       <p>Adoption date:  {{ pets.adoption_date }} </p>
@@ -23,18 +23,27 @@
       <p>Practice Name: {{ pets.veterinarian.practice_name }} </p>
 
     <h2> Length/Height Chart </h2>
-      <ul>
-        <li ng-repeat="length in pets.length">
-        {{ length.date_measured }}: {{ length.length }} {{ length.length_units }} </li>
-      </ul>
-
+      <table class="table table-striped table-condensed">
+        <tr ng-repeat="length in pets.length">
+          <td>{{ length.date_measured}}</td>
+          <td>{{ length.length_amt }} {{ length.length_units }} </td>
+        </tr>
+      </table>
 
     <h2> Weight Chart </h2>
       <ul>
-        <li ng-repeat="weight in pets.weights">
-        {{ weight.date_measured }}: {{ weight.weight_amt }} {{ weight.weight_units }} </li>
-      </ul>
-
+        <table class="table table-striped table-condensed">
+          <thead>
+            <th>Date</th>
+            <th>Weight</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="weight in pets.weights">
+              <td>{{ weight.date_measured}}</td>
+              <td>{{ weight.weight_amt }} {{ weight.weight_units }} </td>
+            </tr>
+          </tbody>
+        </table>
 
     <h2> Conditions </h2>
       <ul>
