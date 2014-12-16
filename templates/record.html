@@ -1,90 +1,127 @@
 <div ng-model="pet" class="container">
 
-    <h1> {{ pets.name }}'s record</h1>
-      <p> {{ pets.picture_url }} </p>
-      <p> {{ pets.category }} [ {{ pets.breed }} ] </p>
+  <h1> {{ pets.name }}'s record</h1>
+    <p> {{ pets.picture_url }} </p>
+    <p> {{ pets.category }} [ {{ pets.breed }} ] </p>
 
-    <hr />
+  <hr />
 
-    <h2> Basic Info </h2>
-      <p>Sex:  {{ pets.sex }} </p>
-      <p>Birthdate: {{ pets.birthdate }}</p>
-      <p>Age: (calculate from birthdate) </p>
-      <p>Adoption date:  {{ pets.adoption_date }} </p>
-      <p>Microchip Number: {{ pets.microchip_number }}</p>
+  <h2> Basic Info </h2>
+    <p>Sex:  {{ pets.sex }} </p>
+    <p>Birthdate: {{ pets.birthdate }}</p>
+    <p>Age: (calculate from birthdate) </p>
+    <p>Adoption date:  {{ pets.adoption_date }} </p>
+    <p>Microchip Number: {{ pets.microchip_number }}</p>
 
-    <hr />
+  <hr />
 
-    <h2> Primary Veterinarian </h2>
+  <h2> Primary Veterinarian </h2>
 
-      <p> Dr. {{ pets.veterinarian.first_name }} {{ pets.veterinarian.last_name }}</p>
-      <p>Email: <a href="mailto:{{ pets.veterinarian.email_address }}">{{ pets.veterinarian.email_address }}</a></p>
-      <p>Phone: <a href="tel:{{ pets.veterinarian.phone_number }}">{{ pets.veterinarian.phone_number }}</a></p>
-      <p>Practice Name: {{ pets.veterinarian.practice_name }} </p>
+    <p> Dr. {{ pets.veterinarian.first_name }} {{ pets.veterinarian.last_name }}</p>
+    <p>Email: <a href="mailto:{{ pets.veterinarian.email_address }}">{{ pets.veterinarian.email_address }}</a></p>
+    <p>Phone: <a href="tel:{{ pets.veterinarian.phone_number }}">{{ pets.veterinarian.phone_number }}</a></p>
+    <p>Practice Name: {{ pets.veterinarian.practice_name }} </p>
 
-    <h2> Length/Height Chart </h2>
-      <table class="table table-striped table-condensed">
-        <tr ng-repeat="length in pets.length">
-          <td>{{ length.date_measured}}</td>
-          <td>{{ length.length_amt }} {{ length.length_units }} </td>
+  <h2> Length/Height Chart </h2>
+    <table class="table table-striped table-condensed">
+      <tr ng-repeat="length in pets.length">
+        <td>{{ length.date_measured}}</td>
+        <td>{{ length.length_amt }} {{ length.length_units }} </td>
+      </tr>
+    </table>
+
+  <h2> Weight Chart </h2>
+    <table class="table table-striped table-condensed">
+      <thead>
+        <th>Date</th>
+        <th>Weight</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="weight in pets.weights">
+          <td>{{ weight.date_measured}}</td>
+          <td>{{ weight.weight_amt }} {{ weight.weight_units }} </td>
         </tr>
-      </table>
+      </tbody>
+    </table>
 
-    <h2> Weight Chart </h2>
-      <ul>
-        <table class="table table-striped table-condensed">
-          <thead>
-            <th>Date</th>
-            <th>Weight</th>
-          </thead>
-          <tbody>
-            <tr ng-repeat="weight in pets.weights">
-              <td>{{ weight.date_measured}}</td>
-              <td>{{ weight.weight_amt }} {{ weight.weight_units }} </td>
-            </tr>
-          </tbody>
-        </table>
-
-    <h2> Conditions </h2>
-      <ul>
-        <li ng-repeat="condition in pets.conditions">
-        {{ condition.name }}: {{ condition.link_url }} {{ condition.diagnosis_date }} </li>
-
-      </ul>
+  <h2> Conditions </h2>
+    <table class="table table-striped table-condensed">
+      <thead>
+        <th>Name</th>
+        <th>Click for More Info</th>
+        <th>Date Diagnosed</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="condition in pets.conditions">
+          <td>{{ condition.name }}</td>
+          <td><a href="{{ condition.link_url }}">{{ condition.link_url }}</a></td>
+          <td>{{ condition.diagnosis_date }}</td>
+        </tr>
+      </tbody>
+    </table>
 
 
+  <h2> Medications </h2>
+    <table class="table table-striped table-condensed">
+      <thead>
+        <td> Name</td>
+        <td> RX Number</td>
+        <td> Dosage </td>
+        <td> Dose Frequency </td>
+        <td> Cost </td>
+        <td> Description </td>
+        <td> Date Prescribed</td>
+      </thead>
+      <tbody>
+        <tr ng-repeat="medication in pets.medications">
+          <td> {{ medication.name }}</td>
+          <td> {{ medication.rx_num }}</td>
+          <td> {{ medication.dose_amt }} {{ medication.dose_units }}</td>
+          <td> {{ medication.dose_frequency }} </td>
+          <td> {{ medication.med_cost }} </td>
+          <td> {{ medication.description  }}</td>
+          <td> {{ medication.date_prescribed }}</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <h2> Medications </h2>
-
-    <p> name </p>
-    <p> rx_num </p>
-    <p> dose </p>
-    <p> units </p>
-    <p> frequency </p>
-    <p> description </p>
-    <p> date_prescribed</p>
-      supply cost>
-    <p> associated veterinarian </p>
-    <p> associated condition </p>
-
-    <h2> Vaccinations </h2>
-
-    <p> name </p>
-    <p> date_given </p>
-    <p> date_next_due </p>
+  <h2> Vaccinations </h2>
+    <table class="table table-striped table-condensed">
+      <thead>
+        <td> Type</td>
+        <td> Date Given</td>
+        <td> Next Due</td>
+      </thead>
+      <tbody>
+        <tr ng-repeat="vaccination in pets.vaccinations">
+          <td> {{ vaccination.name }}</td>
+          <td> {{ vaccination.date_given }}</td>
+          <td> {{ vaccination.date_next_due }}</td>
+        </tr>
+      </tbody>
+    </table>
 
 
-    <p>
-
-    <h2> Appointment History </h2>
-
-    <p> appointment_date </p>
-    <p> veterinarian </p>
-    <p> description </p>
-  <p> cost</p>
-    <p> associated condition(s)</p>
-    <p> associated medication(s)</p>
-    <p> associated vaccination(s) </p>
-
+  <h2> Appointment History </h2>
+   <table class="table table-striped table-condensed">
+      <thead>
+        <td> Appointment Date </td>
+        <td> Veterinarian</td>
+        <td> Description </td>
+        <td> Cost </td>
+        <td> Associated Conditions </td>
+        <td> Associated Vaccinations </td>
+      </thead>
+      <tbody>
+        <tr ng-repeat="appointment in pets.appointments">
+          <td> {{ appointment.appointment_date }}</td>
+          <td> {{ appointment.veterinarian_id }}</td>
+          <td> {{ appointment.description }}</td>
+          <td> {{ appointment.appt_cost }}</td>
+          <td> {{ appointment.condition_id }}</td>
+          <td> {{ appointment.vaccination_id}}</td>
+        </tr>
+      </tbody>
+    </table>
 
 </div>
