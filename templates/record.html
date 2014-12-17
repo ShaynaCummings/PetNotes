@@ -1,14 +1,14 @@
 <div ng-model="pet" class="container">
 
   <h1> {{ pets.name }}'s record</h1>
-    <p> {{ pets.picture_url }} </p>
-    <p> {{ pets.category }} [ {{ pets.breed }} ] </p>
+    <p> <img src="{{ pets.picture_url }}" width=200px> </p>
 
   <hr />
 
   <div class="col-md-6">
     <h2> Basic Info </h2>
       <p>Sex:  {{ pets.sex }} </p>
+      <p>Breed: {{ pets.breed }} </p>
       <p>Birthdate: {{ pets.birthdate }}</p>
       <p>Age: (calculate from birthdate) </p>
       <p>Adoption date:  {{ pets.adoption_date }} </p>

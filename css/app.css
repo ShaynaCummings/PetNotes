@@ -25,3 +25,7 @@ a {
 .dashboard-icons img {
   width:30px;
 }
+
+hr {
+  clear: both;
+}
