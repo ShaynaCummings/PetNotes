@@ -21,6 +21,10 @@ angular.module('PetAppUI').config(function($routeProvider) {
             templateUrl: 'templates/record.html',
             controller: 'PetCtrl'
         })
+        .when('/login', {
+            templateUrl: 'templates/login.html',
+            controller: 'LoginCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });

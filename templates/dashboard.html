@@ -1,5 +1,6 @@
 <div class="container">
-    <h1>Welcome back, User!</h1>
+
+    <h1>Welcome back, {{ User }}!</h1>
 
     <p>Here's a list of your pets: </p>
 
@@ -9,7 +10,7 @@
 
     <div>
     <hr />
-    <p>click to add a new pet</p>
+    <button ng-click="editPet(pet)">add a new pet</button>
     </div>
 
 </div>

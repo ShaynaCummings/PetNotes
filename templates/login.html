@@ -1,9 +1,7 @@
-
-<div ng-controller="UserCtrl">
-  <span></span>
+<div class="container" ng-controller="UserCtrl">
   <form ng-submit="submit()">
-    <input ng-model="user.username" type="text" name="user" placeholder="Username" />
-    <input ng-model="user.password" type="password" name="pass" placeholder="Password" />
-    <input type="submit" value="Login" />
+    <input class="form-control" ng-model="user.username" type="text" name="user" placeholder="Username" />
+    <input class="form-control" ng-model="user.password" type="password" name="pass" placeholder="Password" />
+    <input class="btn btn-default" type="submit" value="Login" />
   </form>
 </div>
