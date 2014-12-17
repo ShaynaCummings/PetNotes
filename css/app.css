@@ -9,3 +9,19 @@ a {
 .mediumtable {
   max-width: 400px;
 }
+
+.dashboard-icons {
+  clear:both;
+  float: left;
+
+}
+
+.dashboard-icons li {
+  display: inline;
+  margin: 20px;
+  padding: 15px;
+}
+
+.dashboard-icons img {
+  width:30px;
+}

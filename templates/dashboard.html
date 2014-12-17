@@ -4,13 +4,15 @@
 
     <p>Here's a list of your pets: </p>
 
-    <ul>
-      <li ng-repeat="pet in pets"><a href="#/pets/{{pet.id}}">   {{ pet.name }}, {{ pet.category }} </a></li>
-    </ul>
+    <div>
+      <ul class="dashboard-icons">
+        <li ng-repeat="pet in pets"><a href="#/pets/{{pet.id}}" class="btn btn-default"> <img src='{{ pet.picture_url }}'>  {{ pet.name }}, {{ pet.category }} </a></li>
+      </ul>
+    </div>
 
     <div>
-    <hr />
-    <button ng-click="editPet(pet)">add a new pet</button>
+
+    <a class="btn btn-default" ng-click="createPet()">add a new pet</a>
     </div>
 
 </div>
