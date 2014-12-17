@@ -1,8 +1,12 @@
-angular.module('PetAppUI').controller('DashboardCtrl', function($scope, $http) {
+angular.module('PetAppUI').controller('DashboardCtrl', function($scope, $http, ServerUrl) {
     'use strict';
 
-    $http.get('http://petapp-api.herokuapp.com/pets').success(function(response) {
+    $http.get(ServerUrl + '/pets').success(function(response) {
         $scope.pets = response;
+    });
+
+    $http.get(ServerUrl).success(function(response) {
+        $scope.user = response;
     });
 
 });
