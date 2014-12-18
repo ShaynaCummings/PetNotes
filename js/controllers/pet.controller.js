@@ -28,23 +28,18 @@ angular.module('PetAppUI').controller('PetCtrl', function($scope, $http, $routeP
     getUsers();
     getPets();
 
+    $scope.createPet = function(pet) {
+      var params = {
+          pet: pet
+      };
 
+      $http.post(ServerUrl + '/pets', params)
+        .success(function(response) {
+            $scope.pets.push(response);
+      });
 
-    // $scope.upsertPet = function(pet) {
-    //   var params = {
-    //       pet: pet
-    //   };
-
-    //   if (pet.id) {
-    //       $http.put(ServerUrl + '/pets/' + pet.id, params);
-    //   } else {
-    //       $http.post(ServerUrl + '/pets', params).success(function(response) {
-    //           $scope.pets.push(response);
-    //       });
-    //   }
-
-    //   $scope.pet = {};
-    // };
+      $scope.pet = {};
+    };
 
     // });
 
