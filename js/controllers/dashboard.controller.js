@@ -9,4 +9,21 @@ angular.module('PetAppUI').controller('DashboardCtrl', function($scope, $http, S
         $scope.user = response;
     });
 
+
+    $scope.upsertPet = function(pet) {
+        var params = {
+            pet: pet
+        };
+
+        if (pet.id) {
+            $http.put(ServerUrl + '/pets/' + pet.id, params);
+        } else {
+            $http.post(ServerUrl + '/pets', params).success(function(response) {
+                $scope.pets.push(response);
+            });
+        }
+
+        $scope.pet = {};
+    };
+
 });

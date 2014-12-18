@@ -13,11 +13,11 @@ angular.module('PetAppUI').config(function($routeProvider) {
             templateUrl: 'templates/dashboard.html',
             controller: 'DashboardCtrl'
         })
-         .when('/record', {
+         .when('/sample', {
              templateUrl: 'templates/record.html',
              controller: 'SampleCtrl'
         })
-        .when('/pets/:petId', {
+        .when('/pets/:id', {
             templateUrl: 'templates/record.html',
             controller: 'PetCtrl'
         })
@@ -25,8 +25,14 @@ angular.module('PetAppUI').config(function($routeProvider) {
             templateUrl: 'templates/login.html',
             controller: 'LoginCtrl'
         })
+        .when('/signup', {
+            templateUrl: 'templates/signup.html',
+            controller: 'SignupCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });
 });
+
+
 

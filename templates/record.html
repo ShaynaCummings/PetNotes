@@ -70,6 +70,9 @@
 
   <h2> Conditions </h2>
   (<a href="" ng-click="editPet(pet.id)">add new</a>)
+
+  <select ng-model="entries" ng-options="entries.title for entries in entries"></select>
+
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -86,7 +89,6 @@
         </tr>
       </tbody>
     </table>
-
 
   <h2> Medications </h2>
   (<a href="" ng-click="editPet(pet.id)">add new</a>)
@@ -108,7 +110,7 @@
           <td> {{ medication.rx_num }}</td>
           <td> {{ medication.dose_amt }} {{ medication.dose_units }}</td>
           <td> {{ medication.dose_frequency }} </td>
-          <td> {{ medication.med_cost }} </td>
+          <td> $ {{ medication.med_cost }} </td>
           <td> {{ medication.description  }}</td>
           <td> {{ medication.date_prescribed }}</td>
         </tr>
@@ -133,7 +135,7 @@
           <td> {{ appointment.appointment_date }}</td>
           <td> {{ appointment.veterinarian_id }}</td>
           <td> {{ appointment.description }}</td>
-          <td> {{ appointment.appt_cost }}</td>
+          <td> $ {{ appointment.appt_cost }}</td>
           <td> {{ appointment.condition_id }}</td>
           <td> {{ appointment.vaccination_id}}</td>
         </tr>

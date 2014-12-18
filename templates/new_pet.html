@@ -1,21 +1,6 @@
-<div class="container">
-
-    <h1>Welcome back, {{ user.name }}!</h1>
-
-    <p>Here's a list of your pets: </p>
-
-    <div>
-      <ul class="dashboard-icons">
-        <li ng-repeat="pet in pets"><a href="#/pets/{{pet.id}}" class="btn btn-default"> <img src='{{ pet.picture_url }}'>  {{ pet.name }}, {{ pet.category }} </a></li>
-      </ul>
-
-    <!-- <a class="btn btn-default" ng-click="createPet()">add a new pet</a> -->
-    </div>
-</div>
-
-  <div ng-controller="ModalCtrl" class="container">
-
-  <button ng-click="toggleModal()" class="btn btn-default">enter a new pet</button>
+<div ng-controller="DashboardCtrl" class="container">
+  <h1>Enter a new pet</h1>
+  <button ng-click="toggleModal()" class="btn btn-default">Open modal</button>
 
   <modal title="Login form" visible="showModal">
     <form role="form" name="createPetForm" ng-submit="upsertPet(user)" novalidate>
@@ -33,5 +18,3 @@
     </form>
   </modal>
 </div>
-
-
