@@ -13,10 +13,6 @@ angular.module('PetAppUI').config(function($routeProvider) {
             templateUrl: 'templates/dashboard.html',
             controller: 'PetCtrl'
         })
-         .when('/sample', {
-             templateUrl: 'templates/record.html',
-             controller: 'SampleCtrl'
-        })
         .when('/pet/:petId', {
             templateUrl: 'templates/record.html',
             controller: 'PetCtrl'
