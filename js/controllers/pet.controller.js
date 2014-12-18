@@ -24,9 +24,10 @@ angular.module('PetAppUI').controller('PetCtrl', function($scope, $http, $routeP
       });
     };
 
+    getPet();
     getUsers();
     getPets();
-    getPet();
+
 
 
     // $scope.upsertPet = function(pet) {
