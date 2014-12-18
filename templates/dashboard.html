@@ -13,9 +13,9 @@
     </div>
 <!-- </div> -->
 
+  <div class="col-md-6">
   <hr />
   <h2> Enter a new pet </h2>
-  <!-- <div ng-controller="ModalCtrl" class="container"> -->
 
   <!-- <button ng-click="toggleModal()" class="btn btn-default">enter a new pet</button> -->
 
@@ -59,12 +59,12 @@
 
         <div class="form-group">
             <label for="birthdate">Birthdate</label>
-            <input type="text" class="form-control" id="birthdate" ng-model="pet.birthdate">
+            <input type="text" class="form-control" id="birthdate" placeholder="YYYY-MM-DD" ng-model="pet.birthdate">
         </div>
 
         <div class="form-group">
             <label for="adoption_date">Adoption Date</label>
-            <input type="text" class="form-control" id="adoption_date" ng-model="pet.adoption_date">
+            <input type="text" class="form-control" id="adoption_date" placeholder="YYYY-MM-DD" ng-model="pet.adoption_date">
         </div>
 
         <div class="form-group">
@@ -79,6 +79,7 @@
 
         <button type="submit" class="btn btn-primary" ng-disabled="createPetForm.$invalid">Submit</button>
     </form>
+  </div>
   <!-- </modal> -->
 </div>
 
