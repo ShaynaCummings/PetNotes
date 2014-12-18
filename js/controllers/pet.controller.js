@@ -5,7 +5,7 @@ angular.module('PetAppUI').controller('PetCtrl', function($scope, $http, $routeP
 
     //get user data
     var getUsers = function() {
-      $http.get(ServerUrl).success(function(response) {
+      $http.get(ServerUrl + '/users/1').success(function(response) {
           $scope.user = response;
       });
     };
