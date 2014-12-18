@@ -3,21 +3,21 @@ angular.module('PetAppUI').controller('PetCtrl', function($scope, $http, $routeP
 
     $scope.petId = $routeParams.petId;
 
-    //get users
+    //get user data
     var getUsers = function() {
       $http.get(ServerUrl).success(function(response) {
           $scope.user = response;
       });
     };
 
-    //get all pets
+    //get list all pets
     var getPets = function() {
       $http.get(ServerUrl + '/pets').success(function(response) {
           $scope.pets = response;
       });
     };
 
-   // get one pet
+   // get one pet by id
     var getPet = function() {
       $http.get(ServerUrl + '/pets/' + $routeParams.petId).success(function(response) {
           $scope.pet = response;
