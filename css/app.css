@@ -1,29 +1,57 @@
 body {
-    padding-top: 50px;
+    padding-top: 60px;
+    font-family: 'Raleway', sans-serif, font-weight: 500;
 }
 
-a {
+.container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+h1 {
+  font-family: 'Handlee', serif;
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.navbar-brand {
   cursor: pointer;
+  color: white !important;
+}
+
+.navtext {
+  color: white;
+  font-size: 16px;
 }
 
 .mediumtable {
   max-width: 400px;
 }
 
-.dashboard-icons {
-  clear:both;
-  float: left;
+#dashboard {
+  min-height: 100px;
+  padding: 10px;
+  margin: 30px;
+}
 
+.dashboard-icons {
+  text-align: center;
 }
 
 .dashboard-icons li {
   display: inline;
   margin: 20px;
   padding: 13px;
+  line-height: 5;
 }
 
 .dashboard-icons img {
-  width:30px;
+  width: 60px;
 }
 
 hr {
@@ -33,14 +61,37 @@ hr {
 
 th {
   font-weight: bold;
-  color: darkslategray;
+  color: #040538;
 }
 
 .pet-pic {
   height:300px;
+  border: 2px solid darkgray;
+  border-radius: 4px;
 }
 
 .removal-btn {
   float: right;
+}
+
+.header_bg {
+  background: #6E1235;
+}
+
+.header_bg {
+  color:black;
+}
+
+h2 {
+  color: black;
+}
+
+.navbar-brand {
+  font-family: 'Handlee', serif;
+  font-size: 2em;
+}
+
+.btn-default {
+  background-color: ;
 }
 

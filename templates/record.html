@@ -1,37 +1,37 @@
 <div class="container">
   <div ng-controller="PetCtrl">
 
-    <div class="col-md-6">
+    <div>
       <h1> {{ pet.name }} </h1>
+
         <p> <img class="pet-pic" src="{{ pet.picture_url }}"> </p>
     </div>
 
     <div class="col-md-6">
-      <h2> Basic Info (<a href="" ng-click="editPet(pet.id)">edit</a>)</h2>
-        <p>Sex:  {{ pet.sex }}</p>
-        <p>Breed: {{ pet.breed }}  </p>
-        <p>Birthdate: {{ pet.birthdate }}</p>
-        <p>Adoption date:  {{ pet.adoption_date }} </p>
-        <p>Microchip Number: {{ pet.microchip_number }}</p>
+      <h3> Basic Info (<a href="" ng-click="editPet(pet.id)">edit</a>)</h3>
+        <p><label>Sex:</label>  {{ pet.sex }}</p>
+        <p><label>Breed:</label> {{ pet.breed }}  </p>
+        <p><label>Birthdate:</label> {{ pet.birthdate }}</p>
+        <p><label>Adoption date:</label>  {{ pet.adoption_date }} </p>
+        <p><label>Microchip Number:</label> {{ pet.microchip_number }}</p>
     </div>
 
-    <hr />
 
-    <div class="col-md-6">
-      <h2> Veterinarian(s) (<a href="" ng-click="editPet(pet.id)">edit</a>)</h2>
-
-        <p> Dr. {{ pet.veterinarian.first_name }} {{ pet.veterinarian.last_name }}</p>
+<!-- <div class="col-md-6">
+      <h3> Veterinarian(s)</h3>
+       <p ng-repeat="veterinarian in pet.veterinarians"></p> -->
+   <!--      <p> Dr. {{ pet.veterinarian_id }} {{ pet.veterinarian.last_name }}</p>
         <p>Email: <a href="mailto:{{ pet.veterinarian.email_address }}">{{ pet.veterinarian.email_address }}</a></p>
         <p>Phone: <a href="tel:{{ pet.veterinarian.phone_number }}">{{ pet.veterinarian.phone_number }}</a></p>
         <p>Practice Name: {{ pet.veterinarian.practice_name }} </p>
-    </div>
+    </div> -->
 
     <div>&nbsp</div>
 
     <hr />
 
     <div class="col-md-6">
-      <h2> Length/Height Chart </h2>
+      <h3> Length/Height Chart </h3>
       (<a href="" ng-click="editPet(pet.id)">add new</a>)
         <table class="table table-striped table-bordered">
            <thead>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="col-md-6">
-      <h2> Weight Chart </h2>
+      <h3> Weight Chart </h3>
       (<a href="" ng-click="editPet(pet.id)">add new</a>)
         <table class="table table-striped table-bordered">
           <thead>
@@ -71,7 +71,7 @@
     <hr />
   <!--   <select ng-model="entries" ng-options="entry.title for entry in entries"></select> -->
 
-    <h2> Conditions </h2>
+    <h3> Conditions </h3>
     (<a href="" ng-click="editPet(pet.id)">add new</a>)
 
     <div ng-controller="EntriesCtrl">
@@ -95,7 +95,7 @@
         </tbody>
       </table>
 
-    <h2> Medications </h2>
+    <h3> Medications </h3>
     (<a href="" ng-click="editPet(pet.id)">add new</a>)
       <table class="table table-striped table-bordered">
         <thead>
@@ -122,7 +122,7 @@
         </tbody>
       </table>
 
-    <h2> Appointment History </h2>
+    <h3> Appointment History </h3>
     (<a href="" ng-click="editPet(pet.id)">add new</a>)
      <table class="table table-striped table-bordered">
         <thead>
@@ -148,7 +148,7 @@
       </table>
 
     <div class= "mediumtable">
-      <h2> Vaccinations </h2>
+      <h3> Vaccinations </h3>
       (<a href="" ng-click="editPet(pet.id)">add new</a>)
         <table class="table table-striped table-bordered">
           <thead>
@@ -170,7 +170,7 @@
 
  <hr />
 
- <button type="button" class="btn btn-primary btn-sm removal-btn" data-toggle="modal" data-target="#petRemoval">
+ <button type="button" class="btn btn-default btn-sm removal-btn" data-toggle="modal" data-target="#petRemoval">
   remove this pet
 </button>
 

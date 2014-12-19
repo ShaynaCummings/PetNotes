@@ -1,12 +1,12 @@
 <div class="container">
 
-    <h1>Welcome back, {{ user.name }}!</h1>
+    <h2>Welcome back, {{ user.name }}!</h2>
 
-    <p></p>
 
-    <div>
+    <div id="dashboard">
+
       <ul class="dashboard-icons">
-        <li ng-repeat="pet in pets"><a href="#/pet/{{pet.id}}" class="btn btn-default btn-lg"> <img src='{{ pet.picture_url }}'>  {{ pet.name }}, {{ pet.category }} </a></li>
+        <li ng-repeat="pet in pets"><a href="#/pet/{{pet.id}}" class="btn btn-default btn-lg"> <img src='{{ pet.picture_url }}'>  {{ pet.name }} </a></li>
       </ul>
 
     </div>
