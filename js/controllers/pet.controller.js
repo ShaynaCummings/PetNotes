@@ -41,6 +41,16 @@ angular.module('PetAppUI').controller('PetCtrl', function($scope, $http, $routeP
       $scope.pet = {};
     };
 
+    $scope.deletePet = function(pet) {
+
+      $http.delete(ServerUrl + '/pets/' + pet.id)
+      .success(function(response) {
+          $scope.pets.splice($scope.pets.indexOf(pet), 1);
+
+          $scope.pet = {};
+      });
+    }
+
     // });
 
 });

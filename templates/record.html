@@ -1,10 +1,10 @@
 <div class="container">
   <div ng-controller="PetCtrl">
 
-    <h1> {{ pet.name }}'s record</h1>
-      <p> <img src="{{ pet.picture_url }}" width=200px> </p>
-
-    <hr />
+    <div class="col-md-6">
+      <h1> {{ pet.name }} </h1>
+        <p> <img class="pet-pic" src="{{ pet.picture_url }}"> </p>
+    </div>
 
     <div class="col-md-6">
       <h2> Basic Info (<a href="" ng-click="editPet(pet.id)">edit</a>)</h2>
@@ -15,9 +15,10 @@
         <p>Microchip Number: {{ pet.microchip_number }}</p>
     </div>
 
+    <hr />
 
     <div class="col-md-6">
-      <h2> Primary Veterinarian (<a href="" ng-click="editPet(pet.id)">edit</a>)</h2>
+      <h2> Veterinarian(s) (<a href="" ng-click="editPet(pet.id)">edit</a>)</h2>
 
         <p> Dr. {{ pet.veterinarian.first_name }} {{ pet.veterinarian.last_name }}</p>
         <p>Email: <a href="mailto:{{ pet.veterinarian.email_address }}">{{ pet.veterinarian.email_address }}</a></p>
@@ -166,6 +167,31 @@
           </tbody>
         </table>
     </div>
+
+ <hr />
+
+ <button type="button" class="btn btn-primary btn-sm removal-btn" data-toggle="modal" data-target="#petRemoval">
+  remove this pet
+</button>
+
+<div class="modal fade" id="petRemoval" tabindex="-1" role="dialog" aria-labelledby="petRemovalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="petRemovalLabel">Really remove this pet?</h4>
+      </div>
+      <div class="modal-body">
+        WARNING! Are you sure you want to delete this pet's record? This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
+         <a href="" ng-click="deletePet(pet)" class="btn btn-danger">Yes, remove this pet</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
   </div>

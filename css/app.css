@@ -35,3 +35,12 @@ th {
   font-weight: bold;
   color: darkslategray;
 }
+
+.pet-pic {
+  height:300px;
+}
+
+.removal-btn {
+  float: right;
+}
+
