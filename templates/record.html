@@ -118,13 +118,17 @@
     </div>
 
     <hr />
-  <!--   <select ng-model="entries" ng-options="entry.title for entry in entries"></select> -->
+
 
     <h3> Conditions </h3>
-    (<a href="" ng-click="editPet(pet.id)">add new</a>)
+
+   <!-- trigger modal -->
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addNewCondition">
+        add new
+      </button>
 
     <div ng-controller="EntriesCtrl">
-      <select ng-model="entries" ng-options="entries.title for entries in entries"></select>
+      <select class="form-control" ng-model="entries" ng-options="entries.title for entries in entries"></select>
     </div>
 
       <table class="table table-striped table-bordered">
@@ -145,7 +149,12 @@
       </table>
 
     <h3> Medications </h3>
-    (<a href="" ng-click="editPet(pet.id)">add new</a>)
+
+     <!-- trigger modal -->
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addNewMedication">
+        add new
+      </button>
+
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
@@ -172,7 +181,12 @@
       </table>
 
     <h3> Appointment History </h3>
-    (<a href="" ng-click="editPet(pet.id)">add new</a>)
+
+      <!-- trigger modal -->
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addNewAppt">
+      add new
+    </button>
+
      <table class="table table-striped table-bordered">
         <thead>
           <tr>
@@ -198,7 +212,12 @@
 
     <div class= "mediumtable">
       <h3> Vaccinations </h3>
-      (<a href="" ng-click="editPet(pet.id)">add new</a>)
+
+       <!-- trigger modal -->
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addNewVaccination">
+          add new
+        </button>
+
         <table class="table table-striped table-bordered">
           <thead>
             <tr>

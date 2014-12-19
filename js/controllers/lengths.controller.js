@@ -15,6 +15,7 @@ angular.module('PetAppUI').controller('LengthCtrl', function($scope, $http, $rou
             $scope.lengths.push(response);
       });
 
+        $scope.pet = {};
         $scope.length = {};
     };
 
