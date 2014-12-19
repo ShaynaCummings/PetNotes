@@ -32,7 +32,12 @@
 
     <div class="col-md-6">
       <h3> Length/Height Chart </h3>
-      (<a href="" ng-click="editPet(pet.id)">add new</a>)
+
+        <!-- trigger modal -->
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addNewLength">
+          add new
+        </button>
+
         <table class="table table-striped table-bordered">
            <thead>
             <tr>
@@ -49,9 +54,53 @@
         </table>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="addNewLength" tabindex="-1" role="dialog" aria-labelledby="addNewLength" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="addNewLength">Log a new length</h4>
+          </div>
+          <div class="modal-body">
+
+          <!-- Form to create new pet length -->
+            <form role="form" name="createLengthForm" ng-submit="createLength(length)" novalidate>
+
+                <div class="form-group">
+                    <label for="date_measured">Date of Measurement</label>
+                    <input type="text" class="form-control" id="date_measured" placeholder="YYYYMMDD" ng-model="pet.date_measured">
+                </div>
+
+                <div class="form-group">
+                    <label for="length_amt">Length Amt</label>
+                    <input type="text" class="form-control" id="length_amt" ng-model="pet.length_amt">
+                </div>
+
+                <div class="form-group">
+                    <label for="length_units">Length Units</label>
+                    <input type="text" class="form-control" id="length_units" ng-model="pet.length_units">
+                </div>
+
+                <button type="submit" class="btn btn-primary" ng-disabled="createLengthForm.$invalid">Submit</button>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <div class="col-md-6">
       <h3> Weight Chart </h3>
-      (<a href="" ng-click="editPet(pet.id)">add new</a>)
+
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addNewWeight">
+                add new
+      </button>
+
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
