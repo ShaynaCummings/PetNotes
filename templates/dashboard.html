@@ -2,85 +2,104 @@
 
     <h1>Welcome back, {{ user.name }}!</h1>
 
-    <p>Here's a list of your pets: </p>
+    <p></p>
 
     <div>
       <ul class="dashboard-icons">
-        <li ng-repeat="pet in pets"><a href="#/pet/{{pet.id}}" class="btn btn-default"> <img src='{{ pet.picture_url }}'>  {{ pet.name }}, {{ pet.category }} </a></li>
+        <li ng-repeat="pet in pets"><a href="#/pet/{{pet.id}}" class="btn btn-default btn-lg"> <img src='{{ pet.picture_url }}'>  {{ pet.name }}, {{ pet.category }} </a></li>
       </ul>
 
-    <!-- <a class="btn btn-default" ng-click="createPet()">add a new pet</a> -->
     </div>
-<!-- </div> -->
 
-  <div class="col-md-6">
-  <hr />
-  <h2> Enter a new pet </h2>
+    <hr />
 
-  <!-- <button ng-click="toggleModal()" class="btn btn-default">enter a new pet</button> -->
+    <!-- trigger modal -->
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addNewPet">
+      Add a new pet!
+    </button>
 
-  <!-- <modal title="Create Pet" visible="showModal"> -->
-    <form role="form" name="createPetForm" ng-submit="createPet(pet)" novalidate>
-        <div class="form-group">
-            <label for="name">Pet Name</label>
-            <input type="text" class="form-control" id="name" ng-model="pet.name" required>
+    <!-- Modal -->
+    <div class="modal fade" id="addNewPet" tabindex="-1" role="dialog" aria-labelledby="addNewPetLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="addNewPetLabel">Add a New Pet!</h4>
+          </div>
+          <div class="modal-body">
+
+          <!-- Form to create new pet record -->
+            <form role="form" name="createPetForm" ng-submit="createPet(pet)" novalidate>
+                <div class="form-group">
+                    <label for="name">Pet Name</label>
+                    <input type="text" class="form-control" id="name" ng-model="pet.name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Type of Pet</label>
+                    <select class="form-control" id="category" ng-model="pet.category" required>
+                        <option value="cat">Cat</option>
+                        <option value="dog">Dog</option>
+                        <option value="bird">Bird</option>
+                        <option value="rabbit">Rabbit</option>
+                        <option value="ferret">Ferret</option>
+                        <option value="reptile">Reptile</option>
+                        <option value="exotic">Exotic or Rodent</option>
+                        <option value="horse">Horse</option>
+                        <option value="farm_animal">Farm Animal</option>
+                        <option value="fish">Fish</option>
+                        <option value="invertebrate">Invertebrate</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="breed">Breed</label>
+                    <input type="text" class="form-control" id="breed" ng-model="pet.breed">
+                </div>
+
+                <div class="form-group">
+                    <label for="sex">Sex</label>
+                    <select class="form-control" id="sex" ng-model="pet.sex">
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Birthdate</label>
+                    <input type="text" class="form-control" id="birthdate" placeholder="YYYYMMDD" ng-model="pet.birthdate">
+                </div>
+
+                <div class="form-group">
+                    <label for="adoption_date">Adoption Date</label>
+                    <input type="text" class="form-control" id="adoption_date" placeholder="YYYYMMDD" ng-model="pet.adoption_date">
+                </div>
+
+                <div class="form-group">
+                    <label for="microchip_number">Microchip Number</label>
+                    <input type="text" class="form-control" id="microchip_number" ng-model="pet.microchip_number">
+                </div>
+
+                <div class="form-group">
+                    <label for="picture_url">Url of Pet's Picture</label>
+                    <input type="text" class="form-control" id="picture_url" ng-model="pet.picture_url">
+                </div>
+
+                <button type="submit" class="btn btn-primary" ng-disabled="createPetForm.$invalid">Submit</button>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
         </div>
 
-        <div class="form-group">
-            <label for="category">Type of Pet</label>
-            <select class="form-control" id="category" ng-model="pet.category" required>
-                <option value="cat">Cat</option>
-                <option value="dog">Dog</option>
-                <option value="bird">Bird</option>
-                <option value="rabbit">Rabbit</option>
-                <option value="ferret">Ferret</option>
-                <option value="reptile">Reptile</option>
-                <option value="exotic">Exotic or Rodent</option>
-                <option value="horse">Horse</option>
-                <option value="farm_animal">Farm Animal</option>
-                <option value="fish">Fish</option>
-                <option value="invertebrate">Invertebrate</option>
-            </select>
-        </div>
+      </div>
+    </div>
+    <!-- end modal -->
 
-        <div class="form-group">
-            <label for="breed">Breed</label>
-            <input type="text" class="form-control" id="breed" ng-model="pet.breed">
-        </div>
 
-        <div class="form-group">
-            <label for="sex">Sex</label>
-            <select class="form-control" id="sex" ng-model="pet.sex">
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-                <option value="unknown">Unknown</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="birthdate">Birthdate</label>
-            <input type="text" class="form-control" id="birthdate" placeholder="YYYY-MM-DD" ng-model="pet.birthdate">
-        </div>
-
-        <div class="form-group">
-            <label for="adoption_date">Adoption Date</label>
-            <input type="text" class="form-control" id="adoption_date" placeholder="YYYY-MM-DD" ng-model="pet.adoption_date">
-        </div>
-
-        <div class="form-group">
-            <label for="microchip_number">Microchip Number</label>
-            <input type="text" class="form-control" id="microchip_number" ng-model="pet.microchip_number">
-        </div>
-
-        <div class="form-group">
-            <label for="picture_url">Url of Picture</label>
-            <input type="text" class="form-control" id="picture_url" ng-model="pet.picture_url">
-        </div>
-
-        <button type="submit" class="btn btn-primary" ng-disabled="createPetForm.$invalid">Submit</button>
-    </form>
-  </div>
-  <!-- </modal> -->
 </div>
 
 
