@@ -70,6 +70,12 @@ th {
   border-radius: 4px;
 }
 
+#logopic {
+  float: left;
+  width: 150px;
+  padding: 5px;
+}
+
 .removal-btn {
   float: right;
 }
