@@ -1,6 +1,6 @@
 body {
-    padding-top: 60px;
-    font-family: 'Open Sans', sans-serif;
+  padding-top: 60px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .container {
@@ -17,6 +17,12 @@ h1 {
 h4 {
   margin-bottom: 30px;
   margin-top: 30px;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  padding: 5px;
 }
 
 .navbar-brand {
@@ -72,7 +78,7 @@ th {
 
 #logopic {
   float: left;
-  width: 150px;
+  height: 100px;
   padding: 5px;
 }
 
