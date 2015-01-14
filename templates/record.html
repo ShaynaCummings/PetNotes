@@ -1,9 +1,9 @@
 <div class="container">
   <div ng-controller="PetCtrl">
 
-    <div>
-      <h1> {{ pet.name }} </h1>
+    <h1> {{ pet.name }} </h1>
 
+    <div class="col-md-6">
         <p> <img class="pet-pic" src="{{ pet.picture_url }}"> </p>
     </div>
 
@@ -15,16 +15,6 @@
         <p><label>Adoption date:</label>  {{ pet.adoption_date }} </p>
         <p><label>Microchip Number:</label> {{ pet.microchip_number }}</p>
     </div>
-
-
-<!-- <div class="col-md-6">
-      <h3> Veterinarian(s)</h3>
-       <p ng-repeat="veterinarian in pet.veterinarians"></p> -->
-   <!--      <p> Dr. {{ pet.veterinarian_id }} {{ pet.veterinarian.last_name }}</p>
-        <p>Email: <a href="mailto:{{ pet.veterinarian.email_address }}">{{ pet.veterinarian.email_address }}</a></p>
-        <p>Phone: <a href="tel:{{ pet.veterinarian.phone_number }}">{{ pet.veterinarian.phone_number }}</a></p>
-        <p>Practice Name: {{ pet.veterinarian.practice_name }} </p>
-    </div> -->
 
     <div>&nbsp</div>
 
@@ -74,12 +64,18 @@
 
                 <div class="form-group">
                     <label for="length_amt">Length Amt</label>
-                    <input type="text" class="form-control" id="length_amt" ng-model="pet.length_amt">
+                    <input type="number" class="form-control" id="length_amt" ng-model="pet.length_amt">
                 </div>
 
                 <div class="form-group">
                     <label for="length_units">Length Units</label>
-                    <input type="text" class="form-control" id="length_units" ng-model="pet.length_units">
+                    <select class="form-control" id="length_units" ng-model="pet.length_units" required>
+                      <option value="centimeters">centimeters</option>
+                      <option value="meters">meters</option>
+                      <option value="inches">inches</option>
+                      <option value="feet">feet</option>
+                      <option value="hands">hands</option>
+                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-primary" ng-disabled="createLengthForm.$invalid">Submit</button>
@@ -93,11 +89,12 @@
 
       </div>
     </div>
+    <!-- end modal -->
 
     <div class="col-md-6">
       <h3> Weight Chart </h3>
 
-      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addNewWeight">
+      <button type="button" class="btn btn-default" class="btn btn-default" data-toggle="modal" data-target="#addNewWeight">
                 add new
       </button>
 
@@ -117,6 +114,47 @@
         </table>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="addNewWeight" tabindex="-1" role="dialog" aria-labelledby="addNewWeight" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="addNewWeight">Log a new weight</h4>
+          </div>
+          <div class="modal-body">
+
+          <!-- Form to create new pet weight -->
+            <form role="form" name="createWeightForm" ng-submit="createWeight(weight)" novalidate>
+              <div class="form-group">
+                <label for="date_measured">Date of Measurement</label>
+                <input type="text" class="form-control" id="date_measured" placeholder="YYYYMMDD" ng-model="pet.date_measured">
+              </div>
+              <div class="form-group">
+                <label for="weight_amt">Weight Amount</label>
+                <input type="number" class="form-control" id="weight_amt" ng-model="weight.weight_amt" >
+              </div>
+              <div class="form-group">
+                <label for="weight_units">Units</label>
+                <select class="form-control" id="weight_units" ng-model="weight.weight_units"  placeholder="ounces" required>
+                  <option value="ounces">Ounces</option>
+                  <option value="pounds">Pounds</option>
+                  <option value="grams">Grams</option>
+                  <option value="kilograms">Kilograms</option>
+                  </select>
+              </div>
+              <button type="submit" class="btn btn-primary" ng-disabled="createWeightForm.$invalid">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end modal -->
+
     <hr />
 
 
@@ -126,10 +164,6 @@
       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addNewCondition">
         add new
       </button>
-
-    <div ng-controller="EntriesCtrl">
-      <select class="form-control" ng-model="entries" ng-options="entries.title for entries in entries"></select>
-    </div>
 
       <table class="table table-striped table-bordered">
         <thead>
@@ -147,6 +181,48 @@
           </tr>
         </tbody>
       </table>
+
+      <!-- Modal -->
+    <div class="modal fade" id="addNewCondition" tabindex="-1" role="dialog" aria-labelledby="addNewCondition" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="addNewCondition">Log a new condition</h4>
+          </div>
+          <div class="modal-body">
+
+          <!-- Form to create new pet condition -->
+            <form role="form" name="createConditionForm" ng-submit="createCondition(condition)" novalidate>
+
+                <div class="form-group" ng-controller="EntriesCtrl">
+                  <label for="condition_name">Condition Name (select from list)</label>
+                  <select class="form-control" ng-model="entries" ng-options="entries.title for entries in entries track by entries.title"></select>
+                </div>
+
+                <div class="form-group">
+                  <label for="link_url">Link URL</label>
+                  <input type="text" class="form-control" id="link_url" ng-model="pet.link_url">
+                </div>
+
+                <div class="form-group">
+                  <label for="diagnosis_date">Diagnosis Date</label>
+                  <input type="date" class="form-control" id="diagnosis_date"  placeholder="YYYYMMDD" ng-model="pet.diagnosis_date">
+                </div>
+
+                <button type="submit" class="btn btn-primary" ng-disabled="createConditionForm.$invalid">Submit</button>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end modal -->
+
 
     <h3> Medications </h3>
 
@@ -180,6 +256,53 @@
         </tbody>
       </table>
 
+    <!-- Modal -->
+    <div class="modal fade" id="addNewMedication" tabindex="-1" role="dialog" aria-labelledby="addNewMedication" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="addNewMedication">Log a new Medication</h4>
+          </div>
+          <div class="modal-body">
+
+          <!-- Form to create new pet length -->
+            <form role="form" name="createLengthForm" ng-submit="createLength(length)" novalidate>
+
+                <div class="form-group">
+                    <label for="date_measured">Date of Measurement</label>
+                    <input type="text" class="form-control" id="date_measured" placeholder="YYYYMMDD" ng-model="pet.date_measured">
+                </div>
+
+                <div class="form-group">
+                    <label for="length_amt">Length Amt</label>
+                    <input type="number" class="form-control" id="length_amt" ng-model="pet.length_amt">
+                </div>
+
+                <div class="form-group">
+                    <label for="length_units">Length Units</label>
+                    <select class="form-control" id="length_units" ng-model="pet.length_units" required>
+                      <option value="centimeters">centimeters</option>
+                      <option value="meters">meters</option>
+                      <option value="inches">inches</option>
+                      <option value="feet">feet</option>
+                      <option value="hands">hands</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" ng-disabled="createLengthForm.$invalid">Submit</button>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end modal -->
+
     <h3> Appointment History </h3>
 
       <!-- trigger modal -->
@@ -210,6 +333,54 @@
         </tbody>
       </table>
 
+      <!-- Modal -->
+    <div class="modal fade" id="addNewAppt" tabindex="-1" role="dialog" aria-labelledby="addNewAppt" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="addNewAppt">Log a new appointment</h4>
+          </div>
+          <div class="modal-body">
+
+          <!-- Form to create new pet length -->
+            <form role="form" name="createLengthForm" ng-submit="createLength(length)" novalidate>
+
+                <div class="form-group">
+                    <label for="date_measured">Date of Measurement</label>
+                    <input type="text" class="form-control" id="date_measured" placeholder="YYYYMMDD" ng-model="pet.date_measured">
+                </div>
+
+                <div class="form-group">
+                    <label for="length_amt">Length Amt</label>
+                    <input type="number" class="form-control" id="length_amt" ng-model="pet.length_amt">
+                </div>
+
+                <div class="form-group">
+                    <label for="length_units">Length Units</label>
+                    <select class="form-control" id="length_units" ng-model="pet.length_units" required>
+                      <option value="centimeters">centimeters</option>
+                      <option value="meters">meters</option>
+                      <option value="inches">inches</option>
+                      <option value="feet">feet</option>
+                      <option value="hands">hands</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" ng-disabled="createLengthForm.$invalid">Submit</button>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end modal -->
+
+
     <div class= "mediumtable">
       <h3> Vaccinations </h3>
 
@@ -235,6 +406,53 @@
           </tbody>
         </table>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addNewVaccination" tabindex="-1" role="dialog" aria-labelledby="addNewVaccination" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="addNewaddNewVaccinationLength">Log a new vaccination</h4>
+          </div>
+          <div class="modal-body">
+
+          <!-- Form to create new pet length -->
+            <form role="form" name="createLengthForm" ng-submit="createLength(length)" novalidate>
+
+                <div class="form-group">
+                    <label for="date_measured">Date of Measurement</label>
+                    <input type="text" class="form-control" id="date_measured" placeholder="YYYYMMDD" ng-model="pet.date_measured">
+                </div>
+
+                <div class="form-group">
+                    <label for="length_amt">Length Amt</label>
+                    <input type="number" class="form-control" id="length_amt" ng-model="pet.length_amt">
+                </div>
+
+                <div class="form-group">
+                    <label for="length_units">Length Units</label>
+                    <select class="form-control" id="length_units" ng-model="pet.length_units" required>
+                      <option value="centimeters">centimeters</option>
+                      <option value="meters">meters</option>
+                      <option value="inches">inches</option>
+                      <option value="feet">feet</option>
+                      <option value="hands">hands</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" ng-disabled="createLengthForm.$invalid">Submit</button>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end modal -->
 
  <hr />
 

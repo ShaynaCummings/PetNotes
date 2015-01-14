@@ -18,7 +18,7 @@
     Add a new pet!
   </button>
 
-  <!-- Modal -->
+  <!-- Modal for adding new pets -->
   <div class="modal fade" id="addNewPet" tabindex="-1" role="dialog" aria-labelledby="addNewPetLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -29,7 +29,7 @@
         <div class="modal-body">
 
         <!-- Form to create new pet record -->
-          <form role="form" name="createPetForm" ng-submit="createPet(pet)" novalidate>
+          <form role="form" name="createPetForm" ng-submit="upsertPet(pet)" novalidate>
               <div class="form-group">
                   <label for="name">Pet Name</label>
                   <input type="text" class="form-control" id="name" ng-model="pet.name" required>
