@@ -65,11 +65,27 @@ angular.module('PetAppUI').factory('TitleFactory', function($http, ServerUrl) {
     };
 });
 
-angular.module('PetAppUI').controller('PetCtrl', function($scope, $http, ServerUrl, TitleFactory, PetFactory) {
+angular.module('PetAppUI').controller('PetCtrl', function($scope, $http, ServerUrl, $routeParams, TitleFactory, PetFactory) {
     'use strict';
 
     $scope.pets = PetFactory.pets;
+    $scope.petId = $routeParams.petId;
     $scope.titles = TitleFactory.titles;
+
+    var getUsers = function() {
+    $http.get(ServerUrl + '/users/1').success(function(response) {
+          $scope.user = response;
+        });
+    };
+
+   // get one pet by id
+    var getPet = function() {
+      $http.get(ServerUrl + '/pets/' + $routeParams.petId).success(function(response) {
+          $scope.pet = response;
+      });
+    };
+    getPet();
+    getUsers();
 
     $scope.upsertPet = function(pet) {
         var params = {
@@ -107,37 +123,88 @@ angular.module('PetAppUI').controller('PetCtrl', function($scope, $http, ServerU
     };
 });
 
-angular.module('PetAppUI').controller('TitleCtrl', function($scope, $http, TitleFactory) {
+angular.module('PetAppUI').directive("clickToEdit", function () {
+            var editorTemplate = '' +
+                '<div class="click-to-edit">' +
+                    '<div ng-hide="view.editorEnabled">' +
+                        '{{value}} ' +
+                        '<a class="button tiny" ng-click="enableEditor()">Edit</a>' +
+                    '</div>' +
+                    '<div ng-show="view.editorEnabled">' +
+                        '<input type="text" class="small-12.columns" ng-model="view.editableValue">' +
+                        '<a class="btn" ng-click="upsertPet(pet)" >Save</a>' +
+                        ' or ' +
+                        '<a class="btn tiny" ng-click="disableEditor()">cancel</a>' +
+                    '</div>' +
+                '</div>';
+
+            return {
+                restrict: "A",
+                replace: true,
+                template: editorTemplate,
+                scope: {
+                    value: "=clickToEdit",
+                },
+                link: function (scope, element, attrs) {
+                    scope.view = {
+                        editableValue: scope.value,
+                        editorEnabled: false
+                    };
+
+                    scope.enableEditor = function () {
+                        scope.view.editorEnabled = true;
+                        scope.view.editableValue = scope.value;
+                        setTimeout(function () {
+                            element.find('input')[0].focus();
+                            //element.find('input').focus().select(); // w/ jQuery
+                        });
+                    };
+
+                    scope.disableEditor = function () {
+                        scope.view.editorEnabled = false;
+                    };
+
+                    scope.save = function () {
+                        scope.value = scope.view.editableValue;
+                        scope.disableEditor();
+                    };
+
+                }
+            };
+        });
+
+
+angular.module('PetAppUI').controller('LengthCtrl', function($scope, $http, LengthFactory) {
     'use strict';
 
-    $scope.titles = TitleFactory.titles;
+    $scope.lengths = LengthFactory.lengths;
 
-    $scope.upsertTitle = function(title) {
+    $scope.upsertLength = function(length) {
         var params = {
-            title: title
+            length: length
         };
 
-        if (title.id) {
-            $http.put(ServerUrl + '/titles/' + title.id, params);
+        if (length.id) {
+            $http.put(ServerUrl + '/lengths/' + length.id, params);
         } else {
-            $http.post(ServerUrl + '/titles', params).success(function(response) {
-                $scope.titles.push(response);
+            $http.post(ServerUrl + '/lengths', params).success(function(response) {
+                $scope.lengths.push(response);
             });
         }
 
-        $scope.title = {};
+        $scope.length = {};
     };
 
-    $scope.editTitle = function(title) {
-        $scope.title = title;
+    $scope.editLength = function(length) {
+        $scope.length = length;
     };
 
-    $scope.deleteTitle = function(title) {
-        $http.delete(ServerUrl + '/titles/' + title.id).success(function(response) {
+    $scope.deleteLength = function(length) {
+        $http.delete(ServerUrl + '/lengths/' + length.id).success(function(response) {
             // remove from pets array by id
-            for (var i = 0; i < $scope.titles.length; i++){
-                if ($scope.titles[i].id == title.id) {
-                    $scope.titles.splice(i, 1);
+            for (var i = 0; i < $scope.length.length; i++){
+                if ($scope.lengths[i].id == length.id) {
+                    $scope.lengths.splice(i, 1);
 
                     break;
                 }

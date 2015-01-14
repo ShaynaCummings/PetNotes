@@ -1,3 +1,14 @@
+<!-- workaround to fix closing modals  -->
+<script>
+  $(function () {
+    $(".custom-close").on('click', function() {
+        $().modal('hide');
+    });
+  });
+
+</script>
+
+
 <div class="container">
   <div ng-controller="PetCtrl">
 
@@ -8,12 +19,29 @@
     </div>
 
     <div class="col-md-6">
-      <h3> Basic Info (<a href="" ng-click="editPet(pet.id)">edit</a>)</h3>
-        <p><label>Sex:</label>  {{ pet.sex }}</p>
+      <h3>Basic Info</h3>
+       <div class="field"> <strong>Sex:</strong>
+            <div click-to-edit="pet.sex"></div>
+        </div>
+        <div class="field"> <strong>breed:</strong>
+            <div click-to-edit="pet.breed"></div>
+        </div>
+        <div class="field"> <strong>birthdate:</strong>
+            <div click-to-edit="pet.birthdate"></div>
+        </div>
+        <div class="field"> <strong>adoption date:</strong>
+            <div click-to-edit="pet.adoption_date"></div>
+        </div>
+        <div class="field"> <strong>microchip:</strong>
+            <div click-to-edit="pet.microchip_number"></div>
+        </div>
+
+
+       <!--  <p><label>Sex:</label>  {{ pet.sex }}</p>
         <p><label>Breed:</label> {{ pet.breed }}  </p>
         <p><label>Birthdate:</label> {{ pet.birthdate }}</p>
         <p><label>Adoption date:</label>  {{ pet.adoption_date }} </p>
-        <p><label>Microchip Number:</label> {{ pet.microchip_number }}</p>
+        <p><label>Microchip Number:</label> {{ pet.microchip_number }}</p> -->
     </div>
 
     <div>&nbsp</div>
@@ -55,7 +83,7 @@
           <div class="modal-body">
 
           <!-- Form to create new pet length -->
-            <form role="form" name="createLengthForm" ng-submit="createLength(length)" novalidate>
+            <form role="form" name="createLengthForm" ng-submit="upsertLength(length)" novalidate>
 
                 <div class="form-group">
                     <label for="date_measured">Date of Measurement</label>
@@ -79,11 +107,9 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary" ng-disabled="createLengthForm.$invalid">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </form>
 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           </div>
         </div>
 
